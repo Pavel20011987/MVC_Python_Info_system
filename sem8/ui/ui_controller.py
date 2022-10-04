@@ -2,11 +2,14 @@ from ui.ui_input import *
 from ui.ui_view import *
 import models
 
-from sem8.models import del_students, students
+from sem8.models import del_students, students, write_csv_students, write_json_students, read_csv_students, \
+    read_json_students, write_csv_groups, groups, write_json_groups, read_csv_groups, read_json_groups
 from sem8.ui.ui_input import get_id, read_menu_number, get_student, get_group_id
 from sem8.ui.ui_view import MENU_EXIT, MENU_STUDENTS_IN_GROUP, MENU_ALL_STUDENTS, MENU_ADD_GROUP, MENU_GROUP_LIST, \
     MENU_UNIVERSITY_INFO, show_university, MENU_SHOW_STUDENT_BYID, show_id_info, show_fio_info, show_menu, show_groups, \
-    MENU_DEL_STUDENT
+    MENU_DEL_STUDENT, MENU_EXPORT_STUDENTS_CSV, MENU_EXPORT_STUDENTS_JSON, MENU_IMPORT_STUDENTS_CSV, \
+    MENU_IMPORT_STUDENTS_JSON, MENU_EXPORT_GROUPS_CSV, MENU_EXPORT_GROUPS_JSON, MENU_IMPORT_GROUPS_CSV, \
+    MENU_IMPORT_GROUPS_JSON
 
 
 def run():
@@ -49,4 +52,27 @@ def run():
             id = get_id()
             fio_info = models.del_students(id)
 
+        elif menu_number == MENU_EXPORT_STUDENTS_CSV:
+            write_csv_students(students)
+
+        elif menu_number == MENU_EXPORT_STUDENTS_JSON:
+            write_json_students(students)
+
+        elif menu_number == MENU_IMPORT_STUDENTS_CSV:
+            read_csv_students()
+
+        elif menu_number == MENU_IMPORT_STUDENTS_JSON:
+            print(read_json_students())
+
+        elif menu_number == MENU_EXPORT_GROUPS_CSV:
+            write_csv_groups(groups)
+
+        elif menu_number == MENU_EXPORT_GROUPS_JSON:
+            write_json_groups(groups)
+
+        elif menu_number == MENU_IMPORT_GROUPS_CSV:
+            read_csv_groups()
+
+        elif menu_number == MENU_IMPORT_GROUPS_JSON:
+            print(read_json_groups())
 
